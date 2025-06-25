@@ -185,13 +185,13 @@ git commit -m "feat: adiciona autenticação com Google OAuth" \
 -m "Relacionado a T001 no PRD prd-login-google"
 ```
 
+## 💡 Inspiração
+
+Este sistema foi inspirado pelo vídeo: [https://www.youtube.com/watch?v=fD4ktSkNCw4](https://www.youtube.com/watch?v=fD4ktSkNCw4)
+
 ## 🤝 Contribuindo
 
 Sinta-se à vontade para sugerir melhorias ou reportar problemas através das issues do GitHub.
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
 
 ---
 
