@@ -1,0 +1,40 @@
+---
+alwaysApply: false
+---
+
+# Regra: Gerando uma Lista de Tarefas a partir de um PRD
+
+## Objetivo
+
+Orientar um assistente de IA na criação de uma lista de tarefas detalhada, passo a passo, em formato Markdown baseada em um Documento de Requisitos do Produto (PRD) existente. A lista de tarefas deve guiar um desenvolvedor através da implementação.
+
+## Saída
+
+- **Formato:** Markdown (`.md`)
+- **Local:** `/tasks/`
+- **Nome do arquivo:** `tasks-[nome-do-arquivo-prd].md` (ex.: `tasks-prd-edicao-perfil-usuario.md`)
+
+## Processo
+
+1.  **Receber Referência do PRD:** O usuário indica ao AI um arquivo PRD específico
+2.  **Analisar PRD:** A IA lê e analisa os requisitos funcionais, histórias do usuário e outras seções do PRD especificado.
+3.  **Fase 1: Gerar Tarefas Pai:** Baseado na análise do PRD, criar o arquivo e gerar as principais tarefas de alto nível necessárias para implementar a funcionalidade. Use seu julgamento sobre quantas tarefas de alto nível usar. Provavelmente serão cerca de 5. Apresente essas tarefas ao usuário no formato especificado (sem sub-tarefas ainda). Informe ao usuário: "Gerei as tarefas de alto nível baseadas no PRD. Pronto para gerar as sub-tarefas? Responda com 'Vai' para prosseguir."
+4.  **Aguardar Confirmação:** Pause e aguarde o usuário responder com "Vai".
+5.  **Fase 2: Gerar Sub-Tarefas:** Uma vez que o usuário confirme, quebrar cada tarefa pai em sub-tarefas menores e acionáveis necessárias para completar a tarefa pai. Garanta que as sub-tarefas sigam logicamente da tarefa pai e cubram os detalhes de implementação implicados pelo PRD.
+6.  **Identificar Arquivos Relevantes:** Baseado nas tarefas e PRD, identificar arquivos potenciais que precisarão ser criados ou modificados. Liste-os na seção `Arquivos Relevantes`, incluindo arquivos de teste correspondentes se aplicável.
+7.  **Gerar Saída Final:** Combinar as tarefas pai, sub-tarefas, arquivos relevantes e notas na estrutura final de Markdown.
+8.  **Salvar Lista de Tarefas:** Salvar o documento gerado no diretório `/tasks/` com o nome `tasks-[nome-do-arquivo-prd].md`, onde `[nome-do-arquivo-prd]` corresponde ao nome base do arquivo PRD de entrada (ex.: se a entrada foi `prd-edicao-perfil-usuario.md`, a saída é `tasks-prd-edicao-perfil-usuario.md`).
+
+## Formato de Saída
+
+A lista de tarefas gerada _deve_ seguir esta estrutura:
+
+```markdown
+## Arquivos Relevantes
+
+- `caminho/para/arquivo1.ts` - Breve descrição do porquê este arquivo é relevante (ex.: Contém o componente principal para esta funcionalidade).
+- `caminho/para/arquivo1.test.ts` - Testes unitários para `arquivo1.ts`.
+- `caminho/para/outro/arquivo.tsx` - Breve descrição (ex.: Manipulador de rota da API para submissão de dados).
+- `caminho/para/outro/arquivo.test.tsx` - Testes unitários para `outro/arquivo.tsx`.
+- `lib/utils/helpers.ts` - Breve descriç
+```

@@ -1,0 +1,44 @@
+---
+alwaysApply: false
+---
+# Gerenciamento de Lista de Tarefas
+Diretrizes para gerenciar listas de tarefas em arquivos markdown para acompanhar o progresso na conclusão de um PRD
+
+## Implementação de Tarefas
+- **Uma sub‑tarefa por vez:** **NÃO** comece a próxima sub‑tarefa até pedir permissão ao usuário e ele dizer "sim", "s", "yes", "y" ou "ok"
+- **Protocolo de conclusão:**  
+  1. Quando você terminar uma **sub‑tarefa**, imediatamente marque como concluída mudando `[ ]` para `[x]`.
+  2. Se **todas** as subtarefas sob uma tarefa pai estiverem agora `[x]`, siga esta sequência:
+    - **Primeiro**: Execute a suite completa de testes (`pytest`, `npm test`, `bin/rails test`, etc.)
+    - **Apenas se todos os testes passarem**: Adicione as mudanças ao stage (`git add .`)
+    - **Limpeza**: Remova quaisquer arquivos temporários e código temporário antes de fazer commit
+    - **Commit**: Use uma mensagem de commit descritiva que:
+      - Use formato de commit convencional (`feat:`, `fix:`, `refactor:`, etc.)
+      - Resume o que foi realizado na tarefa pai
+      - Lista mudanças e adições principais
+      - Referencia o número da tarefa e contexto do PRD
+      - **Formate a mensagem como um comando de linha única usando flags `-m`**, ex.:
+        ```
+        git commit -m "feat: adiciona lógica de validação de pagamento" -m "- Valida tipo de cartão e validade" -m "- Adiciona testes unitários para casos extremos" -m "Relacionado a T123 no PRD"
+        ```
+  3. Uma vez que todas as subtarefas estejam marcadas como concluídas e as mudanças tenham sido commitadas, marque a **tarefa pai** como concluída.
+- Pare após cada sub‑tarefa e aguarde a autorização do usuário.
+
+## Manutenção da Lista de Tarefas
+1. **Atualize a lista de tarefas conforme trabalha:**
+   - Marque tarefas e subtarefas como concluídas (`[x]`) conforme o protocolo acima.
+   - Adicione novas tarefas conforme elas surgem.
+2. **Mantenha a seção "Arquivos Relevantes":**
+   - Liste todos os arquivos criados ou modificados.
+   - Dê a cada arquivo uma descrição de uma linha do seu propósito.
+
+## Instruções para IA
+Ao trabalhar com listas de tarefas, a IA deve:
+1. Regularmente atualizar o arquivo da lista de tarefas após terminar qualquer trabalho significativo.
+2. Seguir o protocolo de conclusão:
+   - Marcar cada **sub‑tarefa** finalizada como `[x]`.
+   - Marcar a **tarefa pai** como `[x]` uma vez que **todas** suas subtarefas estejam `[x]`.
+3. Adicionar tarefas recém-descobertas.
+4. Manter "Arquivos Relevantes" preciso e atualizado.
+5. Antes de começar o trabalho, verificar qual sub‑tarefa é a próxima.
+6. Após implementar uma sub‑tarefa, atualizar o arquivo e então pausar para aprovação do usuário.
